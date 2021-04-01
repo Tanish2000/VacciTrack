@@ -1,3 +1,4 @@
+// JQuery for scroll to top button
 $(document).ready(function(){
     
     //Check to see if the window is top if not then display button
@@ -42,7 +43,7 @@ async function getdata() {
 
         const rows = data.split('\n').slice(1);
 
-        const country_details = rows[0].split(',');
+        // const country_details = rows[0].split(',');
 
         vaccine_data = [];
         vaccine_dates = [];
@@ -177,8 +178,10 @@ set_values();
 document.getElementById('country').addEventListener('change', () => {
     var index = document.getElementById('country').selectedIndex;
     var options = document.getElementById('country').options;
-
     country_name = options[index].value;
+
+    document.getElementById('c_name').innerHTML = country_name;
+
     make_chart();
     set_values();
 })
