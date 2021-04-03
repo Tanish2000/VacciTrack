@@ -44,8 +44,16 @@ html{
 
 .vaccine_dose_container{
     position : relative;
-    height: 75vh;
+    height: 80vh;
     width: auto;
+}
+
+.top_country_container {
+    position: relative;
+    margin-bottom: auto;
+    height: 60vh;
+    width: 85vw;
+    background-color: rgb(248, 234, 211);
 }
 
 #about_me{    
@@ -117,6 +125,13 @@ html{
         z-index : 20;
         border-radius  : 50%;
         cursor: pointer;
+    }
+    .top_country_container {
+        position: relative;
+        margin: auto;
+        height: 70vh;
+        width: 70vw;
+        padding: 20px;
     }
  }
 
