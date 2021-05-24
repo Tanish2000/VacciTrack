@@ -1,5 +1,5 @@
 html{
-    scroll-behavior: smooth;
+    scroll-behavior:smooth;
 }
 
 *{
@@ -8,21 +8,30 @@ html{
     box-sizing: border-box;
 }
 
-.navbar-toggler {
-    font-size : 1.1rem;
-    line-height: 1.5;
-    padding : .25rem;
-    background-color: rgb(187, 198, 199);
+#country {
+    background-color: black;
+    color:bisque;
+    outline: 0;
+}
+
+.baseline {
+    background-image: linear-gradient(to bottom, #000000, #0b060a, #0f0d15, #0c141d, #031a22);
 }
 
 .site_name{
     font-family: 'Potta One', cursive;
-    color: rgb(255, 255, 255);
-    text-shadow : -2px 2px 10px rgb(56, 170, 10);
+    color:bisque;
+    text-shadow : -2px 2px 10px rgb(61, 104, 45);
 }
 
 .lat_fig{
-    background-image: linear-gradient(to top, #0a8bad, #20829e, #2a7890, #316f82, #366674);
+    /* background-image: linear-gradient(to top, #0a8bad, #20829e, #2a7890, #316f82, #366674); */
+    color: rgb(248, 234, 211);
+    background: transparent;
+}
+
+.fig_track{
+    background-image: linear-gradient(to bottom, #000000, #0b060a, #0f0d15, #0c141d, #031a22);
 }
 
 #err_page{
@@ -40,11 +49,13 @@ html{
     margin: auto;
     height: 75vh;
     width: auto;
+    background-color: rgb(248, 234, 211);
 }
 
 .vaccine_dose_container{
     position : relative;
-    height: 80vh;
+    height: 45vh;
+    margin-top: 15px;
     width: auto;
 }
 
@@ -57,7 +68,7 @@ html{
 }
 
 #about_me{    
-    background-image: linear-gradient(to top, #0a8bad, #20829e, #2a7890, #316f82, #366674);
+    background: transparent;
 }
 
 .fa-envelope{
@@ -66,7 +77,7 @@ html{
 }
 
 .fa-github{
-   color : rgb(43, 39, 39);
+   color : rgb(189, 163, 163);
    font-size: 40px;
 }
 .fa-linkedin-in{

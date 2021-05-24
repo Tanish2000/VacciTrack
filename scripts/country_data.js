@@ -32,7 +32,7 @@ async function fetch_country_data()
             var info = country.split('\n');  //Data cleaning by newline character
             var last_row = info[info.length-2];  // Getting the last row of the data
             var last_row_array = last_row.split(',');  // Spliting data by commas
-            // console.log(Number(last_row_array[last_row_array.length-3]));
+            console.log(Number(last_row_array[last_row_array.length-2]));
             var vaccine_percent =  (Number(last_row_array[last_row_array.length-3])/population[i]) *100;
             c_data.push(vaccine_percent.toFixed(2));  // Pushing data to array 
             i = i+1;
@@ -41,7 +41,7 @@ async function fetch_country_data()
     catch(err)
     {
         console.log(err);
-        window.open("/404.html", "_self");
+        // window.open("/404.html", "_self");
     }
 }
 
@@ -63,9 +63,8 @@ async function top_country_chart()
             labels: ["USA","UK",'China','Russia','India','Germany','Italy','France'],
             datasets: [{
                 label: 'Country',
-                axis: 'y',
                 backgroundColor: [
-                    'rgba(0, 99, 132, 0.6)',
+                    'rgba(10, 99, 132, 0.6)',
                     'rgba(30, 99, 132, 0.6)',
                     'rgba(60, 99, 132, 0.6)',
                     'rgba(90, 99, 132, 0.6)',

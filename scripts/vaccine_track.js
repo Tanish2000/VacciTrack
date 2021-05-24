@@ -23,6 +23,11 @@ let vaccine_data = [];
 let vaccine_dates = [];
 let row = [];
 
+const commas = (number) => {
+    number = number.split(".");
+    return number[0].replace(/(\d)(?=(\d\d)+\d$)/g, "$1,") + (number[1] ? ("." + number[1]) : "");
+}
+
 async function remove_ele() {
     let table = document.getElementById('tbody');
 
@@ -72,7 +77,7 @@ async function getdata() {
             for (var i = 0; i < 3; i++) {
                 let td = document.createElement('td');
                 if (row[j][4 + i] == "") row[j][4 + i] = "NA"
-                td.innerHTML = row[j][4 + i];
+                td.innerHTML = commas(row[j][4 + i]);
                 tr.appendChild(td);
             }
 
@@ -82,9 +87,7 @@ async function getdata() {
 
     }
     catch (err) {
-        window.open("/404.html", "_self");
-        // document.getElementById('land_page').innerHTML = "";
-        // document.getElementById('err_page').classList.remove('d-none');
+        window.open("/404.html", "_blank");
     }
 
 }
@@ -107,7 +110,7 @@ async function make_chart() {
             labels: vaccine_dates,
             datasets: [{
                 label: 'Covid Vaccinations in ' + country_name,
-                backgroundColor: 'rgb(255, 89, 105)',
+                backgroundColor: 'rgba(255, 70, 100, 0.6)',
                 borderColor: '#40403E',
                 data: vaccine_data,
             }],
@@ -166,9 +169,9 @@ make_chart();
 
 async function set_values() {
     await getdata();
-    document.getElementById('t_vaccine').innerHTML = row[row.length - 1][4]
-    document.getElementById('f_dose').innerHTML = row[row.length - 1][5]
-    document.getElementById('s_dose').innerHTML = row[row.length - 1][6]
+    document.getElementById('t_vaccine').innerHTML = commas(row[row.length - 1][4])
+    document.getElementById('f_dose').innerHTML = commas(row[row.length - 1][5])
+    document.getElementById('s_dose').innerHTML = commas(row[row.length - 1][6])
 }
 
 
@@ -179,9 +182,8 @@ document.getElementById('country').addEventListener('change', () => {
     var index = document.getElementById('country').selectedIndex;
     var options = document.getElementById('country').options;
     country_name = options[index].value;
-
-    document.getElementById('c_name').innerHTML = country_name;
-
     make_chart();
     set_values();
+    document.getElementById('c_name').innerHTML = country_name;
+    document.getElementById('c2_name').innerHTML = country_name;
 })

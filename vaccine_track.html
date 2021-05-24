@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icons/favicon.ico" type="image/icon type">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&family=New+Tegomin&family=Potta+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>VacciTrack</title>
+    <link href="styles/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container-fluid baseline">
+        <!-- Scroll to top button -->
+        <a class="scrollToTop"><img src="img/arrow.png" /></a>
+
+        <div class="text-left py-3">
+            <button class="rounded-circle" onclick="goBack()">
+                <img src="/img/previous.svg" style="height: auto;width: 2rem;">
+            </button>
+        </div>
+
+        <!-- Main Wrapper -->
+        <div class="container py-2" id="land_page">
+            <!-- Top Countries Graph -->
+            <div>
+                <h5 class="text-center font-italic" style="color:bisque">Covid-19 Vaccinations by Population</h5>
+                <p class="text-muted text-center">(In percentage %)</p>
+                <div class="top_country_container pr-4">
+                    <canvas id="top_country_chart"></canvas>
+                </div>
+                <a href="/india_track.html" class="link-danger">
+                    <p class="text-center mt-4 mb-5" style="color:bisque"><u>India (State wise) COVID-19 Tracker</u></p>
+                </a>
+            </div>
+
+            <!-- Country Select Option -->
+            <div>
+                <h5 class="text-center" style="color:bisque">Country :
+                    <span>
+                        <select id="country" class="text-white shadow-lg p-1">
+                            <option value="Afghanistan">Afghanistan</option>
+                            <option value="Albania">Albania</option>
+                            <option value="Algeria">Algeria</option>
+                            <option value="Argentina">Argentina</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Austria">Austria</option>
+                            <option value="Bahrain">Bahrain</option>
+                            <option value="Bangladesh">Bangladesh</option>
+                            <option value="Belgium">Belgium</option>
+                            <option value="Bhutan">Bhutan</option>
+                            <option value="Brazil">Brazil</option>
+                            <option value="Cambodia">Cambodia</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Chile">Chile</option>
+                            <option value="China">China</option>
+                            <option value="Colombia">Colombia</option>
+                            <option value="Croatia">Croatia</option>
+                            <option value="Cyprus">Cyprus</option>
+                            <option value="Denmark">Denmark</option>
+                            <option value="Egypt">Egypt</option>
+                            <option value="England">England</option>
+                            <option value="Finland">Finland</option>
+                            <option value="France">France</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Ghana">Ghana</option>
+                            <option value="Hong Kong">Hong Kong</option>
+                            <option value="Hungary">Hungary</option>
+                            <option value="India" selected>India</option>
+                            <option value="Indonesia">Indonesia</option>
+                            <option value="Iran">Iran</option>
+                            <option value="Israel">Israel</option>
+                            <option value="Italy">Italy</option>
+                            <option value="Japan">Japan</option>
+                            <option value="Kenya">Kenya</option>
+                            <option value="Lebanon">Lebanon</option>
+                            <option value="Malaysia">Malaysia</option>
+                            <option value="Mexico">Mexico</option>
+                            <option value="Mongolia">Mongolia</option>
+                            <option value="Myanmar">Myanmar</option>
+                            <option value="Nepal">Nepal</option>
+                            <option value="Netherlands">Netherlands</option>
+                            <option value="New Zealand">New Zealand</option>
+                            <option value="Nigeria">Nigeria</option>
+                            <option value="Pakistan">Pakistan</option>
+                            <option value="Peru">Peru</option>
+                            <option value="Poland">Poland</option>
+                            <option value="Portugal">Portugal</option>
+                            <option value="Qatar">Qatar</option>
+                            <option value="Romania">Romania</option>
+                            <option value="Russia">Russia</option>
+                            <option value="Saudi Arabia">Saudi Arabia</option>
+                            <option value="Scotland">Scotland</option>
+                            <option value="Serbia">Serbia</option>
+                            <option value="Singapore">Singapore</option>
+                            <option value="South Africa">South Africa</option>
+                            <option value="South Korea">South Korea</option>
+                            <option value="Spain">Spain</option>
+                            <option value="Sri Lanka">Sri Lanka</option>
+                            <option value="Sweden">Sweden</option>
+                            <option value="Switzerland">Switzerland</option>
+                            <option value="Taiwan">Taiwan</option>
+                            <option value="Thailand">Thailand</option>
+                            <option value="Turkey">Turkey</option>
+                            <option value="United Arab Emirates">UAE</option>
+                            <option value="Uganda">Uganda</option>
+                            <option value="Ukraine">Ukraine</option>
+                            <option value="United Kingdom">UK</option>
+                            <option value="United States">USA</option>
+                            <option value="Vietnam">Vietnam</option>
+                            <option value="Zimbabwe">Zimbabwe</option>
+                        </select>
+                    </span>
+                </h5>
+            </div>
+
+
+            <!-- Graphs -->
+            <div class="vaccine_chart_container">
+                <canvas id="vaccine_chart"></canvas>
+            </div>
+
+            <div class="container">
+                <p class="m-3 text-italic font-italic w-100 px-2 text-muted">Hover / Tap on the dots in the graph for
+                    the number of vaccinations on that particular date.</p>
+            </div>
+
+
+            <!-- Latest Figures -->
+            <div class="jumbotron my-5 lat_fig">
+                <h2 class="text-center underline" style="font-family:'Kiwi Maru', serif;"><u>Latest Figures</u></h2>
+                <p class="text-center text-light">(In <span id="c_name">India</span>)</p>
+                <div class="row">
+                    <div class="col-12 col-md-4 text-center mt-5">
+                        <h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" id="t_vaccine"></h2>
+                        <p style="font-family: 'Potta One', cursive;">Total Vaccinations</p>
+                    </div>
+                    <div class="col-12 col-md-4 text-center mt-5">
+                        <h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" id="f_dose"></h2>
+                        <p style="font-family: 'Potta One', cursive;">First Dose</p>
+                    </div>
+                    <div class="col-12 col-md-4 text-center mt-5">
+                        <h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" id="s_dose"></h2>
+                        <p style="font-family: 'Potta One', cursive;">Second Dose</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="vaccine_dose_container col-12 col-md-4 mx-auto mt-2" id="pieChart">
+                        <canvas id="vaccine_dose_piechart"></canvas>
+                    </div>
+                    <div class="col-12 col-md-12 mt-5" id="not_avl">
+                        <p class="text-center text-white">*Not able to draw Pie-Chart because required data is not
+                            available.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Total Vaccinations -->
+            <div class="py-3 bg-transparent p-md-4 ">
+                <h4 class="text-center my-2" style="font-family:'Kiwi Maru', serif;color:bisque"><u>Cases (date
+                        wise)</u>
+                </h4>
+                <div>
+                    <p class="d-md-none m-3 font-italic w-100 my-2 text-muted">*Swipe right to see the full table.
+                    </p>
+                </div>
+                <div class="table-responsive-sm text-white">
+                    <table
+                        class="table table-sm table-md text-nowrap table-striped table-transparent table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Vaccinations</th>
+                                <th scope="col">First Dose</th>
+                                <th scope="col">Second Dose</th>
+                            </tr>
+                        </thead>
+                        <tbody id='tbody'></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/patternomaly/1.3.2/patternomaly.js"
+        integrity="sha512-gNM40ajr/bSi3Af8i6D4dV2CUWZrkm2zhgeWf46H91zOwWoH8Wwsyf6kQ4syfNyOrnjATrjKkP4ybWD7eKp2KA=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="scripts/vaccine_track.js"></script>
+    <script src="scripts/country_data.js"></script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>
